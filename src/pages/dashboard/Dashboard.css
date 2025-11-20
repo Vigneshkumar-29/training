@@ -1,0 +1,122 @@
+/* Dashboard page styles */
+.dashboard-layout {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.main-content-wrapper {
+    margin-left: var(--sidebar-width);
+    flex-grow: 1;
+    padding-top: var(--header-height);
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.main-content {
+    padding: var(--padding-base);
+    max-width: 1728px;
+    margin: 0 auto;
+    padding-bottom: 50px;
+}
+
+/* Welcome Card */
+.welcome-card {
+    background: linear-gradient(45deg, var(--color-primary) 0%, #4a90e2 100%);
+    color: var(--color-white);
+    padding: var(--padding-base);
+    border-radius: var(--card-border-radius);
+    margin-bottom: var(--padding-base);
+}
+
+.welcome-card h1 {
+    color: var(--color-white);
+}
+
+.welcome-card p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Grid system */
+.grid {
+    display: grid;
+    gap: var(--padding-base);
+}
+
+.grid-2-cols {
+    grid-template-columns: repeat(auto-fit, minmax(calc(50% - var(--padding-base) / 2), 1fr));
+}
+
+.grid-4-cols {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Cards */
+.card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    padding: var(--padding-base);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--padding-base);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .main-content-wrapper {
+        margin-left: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .main-content-wrapper {
+        margin-left: 0;
+        padding-top: var(--header-height);
+        height: auto;
+    }
+
+    .main-content {
+        padding: 16px;
+    }
+
+    .welcome-card {
+        padding: 16px;
+    }
+
+    .grid-4-cols {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .grid-2-cols {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p,
+    div,
+    span,
+    li {
+        font-size: 14px;
+    }
+}

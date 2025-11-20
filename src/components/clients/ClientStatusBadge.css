@@ -1,0 +1,27 @@
+/* Status Badge styles */
+.status-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: var(--color-white);
+    line-height: 1;
+}
+
+.status-badge.new {
+    background-color: var(--color-info-blue);
+}
+
+.status-badge.active {
+    background-color: var(--color-success);
+}
+
+.status-badge.paused {
+    background-color: var(--color-paused-gray);
+}
+
+.status-badge.closed {
+    background-color: var(--color-closed-dark);
+}

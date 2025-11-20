@@ -1,0 +1,20 @@
+/* ClientsChart styles */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    height: 350px;
+    min-height: 250px;
+}
+
+.chart-container svg {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+}

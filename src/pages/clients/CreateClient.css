@@ -1,0 +1,56 @@
+/* Create Client Page Styles */
+.create-client-layout {
+    min-height: 100vh;
+    background-color: var(--color-background-light);
+}
+
+/* Page Header overrides/additions */
+.page-header .back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0;
+}
+
+.page-header .back-link:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+/* Form Card */
+.form-card {
+    max-width: 100%;
+}
+
+/* Form Fields */
+.required-field label::after {
+    content: ' *';
+    color: var(--color-alert-red);
+}
+
+.form-group {
+    margin-bottom: var(--padding-base);
+}
+
+/* Button Group */
+.button-group {
+    display: flex;
+    gap: 16px;
+    margin-top: var(--padding-base);
+    justify-content: flex-end;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-group button {
+        width: 100%;
+    }
+}

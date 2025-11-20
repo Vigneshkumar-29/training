@@ -1,0 +1,77 @@
+/* StatsCard styles */
+.metric-card {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.metric-card .value {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--color-text-primary);
+}
+
+.metric-card .label {
+    font-size: 15px;
+    color: var(--color-text-secondary);
+    margin-bottom: 10px;
+}
+
+.metric-card .trend {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.metric-card .trend.positive {
+    color: var(--color-success);
+}
+
+.metric-card .trend.negative {
+    color: var(--color-alert-red);
+}
+
+.metric-card .trend.neutral {
+    color: var(--color-text-secondary);
+}
+
+.metric-card .trend i {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.metric-card.overdue .value {
+    color: var(--color-alert-red);
+}
+
+.metric-card.deadline .value {
+    color: var(--color-warning-orange);
+}
+
+.metric-card .quick-link {
+    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .metric-card .value {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .metric-card .value {
+        font-size: 24px;
+    }
+
+    .metric-card .label {
+        font-size: 13px;
+    }
+
+    .metric-card .trend {
+        font-size: 12px;
+    }
+}
