@@ -25,42 +25,29 @@ const ClientsChart = ({ data }) => {
             const arc = d3.arc().innerRadius(radius * 0.6).outerRadius(radius);
             const outerArc = d3.arc().innerRadius(radius * 0.9).outerRadius(radius * 0.9);
 
+            // Create arc generator for animation
+            const arcTween = function (d) {
+                const interpolate = d3.interpolate({ startAngle: 0, endAngle: 0 }, d);
+                return function (t) {
+                    return arc(interpolate(t));
+                };
+            };
+
+            // Animate donut slices entrance
             g.selectAll('slices')
                 .data(pie(data))
                 .enter()
                 .append('path')
-                .attr('d', arc)
                 .attr('fill', d => d.data.color || 'var(--color-primary)')
                 .attr('stroke', 'var(--color-white)')
                 .style('stroke-width', '2px')
-                .style('opacity', 0.7)
-                .on('mouseover', function (event, d) {
-                    d3.select(this).style('opacity', 1).attr('stroke-width', '3px');
-                    const total = d3.sum(data, d => d.count);
-                    const percent = ((d.data.count / total) * 100).toFixed(1);
-                    const tooltip = d3
-                        .select('body')
-                        .append('div')
-                        .attr('class', 'chart-tooltip')
-                        .style('position', 'absolute')
-                        .style('background', 'var(--color-white)')
-                        .style('border', '1px solid var(--color-border)')
-                        .style('padding', '8px 12px')
-                        .style('border-radius', '4px')
-                        .style('box-shadow', 'var(--card-shadow)')
-                        .style('font-size', '13px')
-                        .style('pointer-events', 'none')
-                        .style('z-index', '9999')
-                        .html(`<strong>${d.data.status}</strong>: ${d.data.count} (${percent}%)`);
-                    tooltip
-                        .style('left', event.pageX + 10 + 'px')
-                        .style('top', event.pageY - 20 + 'px');
-                })
-                .on('mouseout', function () {
-                    d3.select(this).style('opacity', 0.7).attr('stroke-width', '2px');
-                    d3.select('.chart-tooltip').remove();
-                });
+                .style('opacity', 0.9)
+                .transition()
+                .duration(1200)
+                .ease(d3.easeCubicOut)
+                .attrTween('d', arcTween);
 
+            // Animate polylines (leader lines)
             g.selectAll('polyline')
                 .data(pie(data))
                 .enter()
@@ -68,6 +55,7 @@ const ClientsChart = ({ data }) => {
                 .attr('stroke', 'var(--color-text-secondary)')
                 .style('fill', 'none')
                 .attr('stroke-width', 1)
+                .style('opacity', 0)
                 .attr('points', function (d) {
                     const posA = arc.centroid(d);
                     const posB = outerArc.centroid(d);
@@ -75,8 +63,14 @@ const ClientsChart = ({ data }) => {
                     const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
                     posC[0] = radius * 0.99 * (midangle < Math.PI ? 1 : -1);
                     return [posA, posB, posC];
-                });
+                })
+                .transition()
+                .duration(800)
+                .delay(1000)
+                .ease(d3.easeCubicOut)
+                .style('opacity', 1);
 
+            // Animate labels
             g.selectAll('slice-labels')
                 .data(pie(data))
                 .enter()
@@ -93,7 +87,14 @@ const ClientsChart = ({ data }) => {
                 })
                 .text(d => d.data.status)
                 .style('font-size', 13)
-                .style('fill', 'var(--color-text-primary)');
+                .style('font-weight', '600')
+                .style('fill', 'var(--color-text-primary)')
+                .style('opacity', 0)
+                .transition()
+                .duration(600)
+                .delay(1200)
+                .ease(d3.easeCubicOut)
+                .style('opacity', 1);
         };
 
         createPieChart();

@@ -43,53 +43,43 @@ const ProjectsChart = ({ data }) => {
                 .style('font-size', '12px')
                 .style('fill', 'var(--color-text-secondary)');
 
+            // Animate bars entrance
             g.selectAll('.bar')
                 .data(data)
                 .enter()
                 .append('rect')
                 .attr('class', 'bar')
                 .attr('x', d => x(d.status))
-                .attr('y', d => y(d.count))
+                .attr('y', height)
                 .attr('width', x.bandwidth())
-                .attr('height', d => height - y(d.count))
+                .attr('height', 0)
                 .attr('fill', d => d.color || 'var(--color-primary)')
-                .on('mouseover', function (event, d) {
-                    d3.select(this).attr('opacity', 0.8);
-                    const tooltip = d3
-                        .select('body')
-                        .append('div')
-                        .attr('class', 'chart-tooltip')
-                        .style('position', 'absolute')
-                        .style('background', 'var(--color-white)')
-                        .style('border', '1px solid var(--color-border)')
-                        .style('padding', '8px 12px')
-                        .style('border-radius', '4px')
-                        .style('box-shadow', 'var(--card-shadow)')
-                        .style('font-size', '13px')
-                        .style('pointer-events', 'none')
-                        .style('z-index', '9999')
-                        .html(`<strong>${d.status}</strong>: ${d.count}`);
-                    tooltip
-                        .style('left', event.pageX + 10 + 'px')
-                        .style('top', event.pageY - 20 + 'px');
-                })
-                .on('mouseout', function () {
-                    d3.select(this).attr('opacity', 1);
-                    d3.select('.chart-tooltip').remove();
-                });
+                .transition()
+                .duration(1000)
+                .ease(d3.easeCubicOut)
+                .attr('y', d => y(d.count))
+                .attr('height', d => height - y(d.count));
 
+            // Add labels with animation
             g.selectAll('.bar-label')
                 .data(data)
                 .enter()
                 .append('text')
                 .attr('class', 'bar-label')
                 .attr('x', d => x(d.status) + x.bandwidth() / 2)
-                .attr('y', d => y(d.count) - 5)
+                .attr('y', height)
                 .attr('text-anchor', 'middle')
                 .text(d => d.count)
                 .style('fill', 'var(--color-text-primary)')
                 .style('font-size', '12px')
-                .style('font-weight', '500');
+                .style('font-weight', '600')
+                .style('opacity', 0)
+                .transition()
+                .duration(1000)
+                .delay(500)
+                .ease(d3.easeCubicOut)
+                .attr('y', d => y(d.count) - 5)
+                .style('opacity', 1);
         };
 
         createBarChart();

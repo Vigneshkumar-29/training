@@ -53,7 +53,7 @@ const Dashboard = () => {
 
     return (
         <div className="dashboard-layout">
-            <Sidebar activeItem="dashboard" />
+            <Sidebar />
 
             <div className="main-content-wrapper">
                 <Navbar userInitials="AD" />
