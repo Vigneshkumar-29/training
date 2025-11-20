@@ -94,29 +94,6 @@
     color: var(--color-text-secondary);
     text-transform: uppercase;
     font-size: 13px;
-}
-
-.data-table tbody tr:nth-child(odd) {
-    background-color: var(--color-white);
-}
-
-.data-table tbody tr:nth-child(even) {
-    background-color: var(--color-background-light);
-}
-
-.data-table tbody tr {
-    cursor: pointer;
-}
-
-.data-table .actions {
-    display: flex;
-    gap: 4px;
-}
-
-/* Pagination */
-.pagination {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin-top: var(--padding-base);
     padding-top: var(--padding-base);

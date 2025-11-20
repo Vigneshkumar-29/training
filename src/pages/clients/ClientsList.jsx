@@ -12,10 +12,7 @@ const ClientsList = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const navigate = useNavigate();
-
-    // Mock data
-    const clients = [
+    const [clients, setClients] = useState([
         {
             id: 1,
             name: 'John Smith',
@@ -70,7 +67,8 @@ const ClientsList = () => {
             status: 'Active',
             createdAt: '2023-08-22'
         }
-    ];
+    ]);
+    const navigate = useNavigate();
 
     const statusOptions = [
         { value: '', label: 'All Statuses' },
@@ -79,6 +77,34 @@ const ClientsList = () => {
         { value: 'Paused', label: 'Paused' },
         { value: 'Closed', label: 'Closed' }
     ];
+
+    // Action handlers
+    const handleView = (client) => {
+        console.log('View client:', client);
+        // TODO: Navigate to client details page
+        // navigate(`/clients/${client.id}`);
+        alert(`Viewing client: ${client.name}\n\nThis will navigate to the client details page.`);
+    };
+
+    const handleEdit = (client) => {
+        console.log('Edit client:', client);
+        // TODO: Navigate to edit client page
+        // navigate(`/clients/${client.id}/edit`);
+        alert(`Editing client: ${client.name}\n\nThis will navigate to the edit client page.`);
+    };
+
+    const handleDelete = (client) => {
+        const confirmed = window.confirm(
+            `Are you sure you want to delete ${client.name}?\n\nThis action cannot be undone.`
+        );
+
+        if (confirmed) {
+            // Remove from clients list
+            setClients(prevClients => prevClients.filter(c => c.id !== client.id));
+            console.log('Deleted client:', client);
+            alert(`Client "${client.name}" has been deleted successfully.`);
+        }
+    };
 
     // Filter clients
     const filteredClients = clients.filter(client => {
@@ -113,6 +139,7 @@ const ClientsList = () => {
                             variant="primary"
                             icon="fas fa-plus"
                             onClick={() => navigate('/clients/new')}
+                            className="btn-sm"
                         >
                             Add New Client
                         </Button>
@@ -155,7 +182,7 @@ const ClientsList = () => {
                                 </thead>
                                 <tbody>
                                     {currentClients.map((client) => (
-                                        <tr key={client.id} className="interactive-row">
+                                        <tr key={client.id}>
                                             <td>{client.name}</td>
                                             <td>{client.company}</td>
                                             <td>{client.email}</td>
@@ -165,13 +192,29 @@ const ClientsList = () => {
                                             </td>
                                             <td>{client.createdAt}</td>
                                             <td className="actions">
-                                                <Button variant="icon" aria-label="View Details">
+                                                <Button
+                                                    variant="icon"
+                                                    aria-label="View Details"
+                                                    onClick={() => handleView(client)}
+                                                    title="View Details"
+                                                >
                                                     <i className="fas fa-eye"></i>
                                                 </Button>
-                                                <Button variant="icon" aria-label="Edit Client">
+                                                <Button
+                                                    variant="icon"
+                                                    aria-label="Edit Client"
+                                                    onClick={() => handleEdit(client)}
+                                                    title="Edit Client"
+                                                >
                                                     <i className="fas fa-edit"></i>
                                                 </Button>
-                                                <Button variant="icon" className="danger" aria-label="Delete Client">
+                                                <Button
+                                                    variant="icon"
+                                                    className="danger"
+                                                    aria-label="Delete Client"
+                                                    onClick={() => handleDelete(client)}
+                                                    title="Delete Client"
+                                                >
                                                     <i className="fas fa-trash-alt"></i>
                                                 </Button>
                                             </td>
