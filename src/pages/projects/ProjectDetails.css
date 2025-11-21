@@ -1,0 +1,404 @@
+/* Project Details Page Styles */
+.project-details-layout {
+    min-height: 100vh;
+    background-color: var(--color-background-light);
+}
+
+/* Back Button */
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-text-secondary);
+    font-family: var(--font-inter);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-back:hover {
+    color: var(--color-primary);
+}
+
+/* Page Header */
+.project-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.project-details-header h1 {
+    font-family: var(--font-inter);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-family: var(--font-inter);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid;
+}
+
+.button-secondary {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.button-secondary:hover {
+    background-color: #f0f7ff;
+}
+
+.button-danger {
+    background-color: var(--color-alert-red);
+    color: var(--color-white);
+    border-color: var(--color-alert-red);
+}
+
+.button-danger:hover {
+    background-color: #dc2626;
+}
+
+.button-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+.button-primary:hover {
+    background-color: #1e5b9e;
+}
+
+/* Project Information Card */
+.project-info-card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.card-header {
+    margin-bottom: 24px;
+}
+
+.card-header h2 {
+    font-family: var(--font-inter);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.project-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-info-item label {
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.project-info-item span,
+.project-info-item a {
+    font-family: var(--font-inter);
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.project-info-item a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.project-info-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.description {
+    line-height: 1.6;
+    max-width: 100%;
+}
+
+/* Status Badge */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.badge-status-in-progress {
+    background-color: rgba(45, 116, 192, 0.2);
+    color: var(--color-text-secondary);
+}
+
+.badge-status-not-started {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-secondary);
+}
+
+.badge-status-completed,
+.badge-status-done {
+    background-color: rgba(51, 204, 153, 0.2);
+    color: var(--color-success);
+}
+
+.badge-status-paused {
+    background-color: rgba(249, 115, 22, 0.2);
+    color: var(--color-warning-orange);
+}
+
+.badge-overdue {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: var(--color-alert-red);
+    font-weight: 600;
+}
+
+.badge-near-deadline {
+    background-color: rgba(249, 115, 22, 0.2);
+    color: var(--color-warning-orange);
+    font-weight: 600;
+}
+
+.badge-status-todo {
+    background-color: var(--color-secondary-light);
+    color: var(--color-text-secondary);
+}
+
+/* Assigned Users */
+.assigned-users {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.user-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    background-color: var(--color-background-light);
+    border: 1px solid var(--color-border);
+    border-radius: 17px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+}
+
+.avatar-small {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--color-secondary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+/* Progress Bar */
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background-color: var(--color-background-light);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--color-success);
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    text-align: right;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-top: 8px;
+}
+
+/* Tasks Card */
+.tasks-card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+}
+
+.tasks-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Data Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+}
+
+.data-table th {
+    background-color: var(--color-background-light);
+    padding: 16px;
+    text-align: left;
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.data-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-inter);
+    font-size: 15px;
+    color: var(--color-text-primary);
+    vertical-align: middle;
+}
+
+.data-table tr.interactive-row {
+    transition: background-color 0.2s;
+}
+
+.data-table tr.interactive-row:hover {
+    background-color: var(--color-background-light);
+}
+
+.task-status-select {
+    padding: 4px 12px;
+    border: 1px solid #767676;
+    border-radius: 12px;
+    font-size: 12px;
+    cursor: pointer;
+    appearance: none;
+    background-color: transparent;
+}
+
+/* Action Buttons */
+.button-icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    transition: color 0.2s;
+}
+
+.button-icon:hover {
+    color: var(--color-primary);
+}
+
+.button-icon.delete-task-button:hover {
+    color: var(--color-alert-red);
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.pagination button {
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--color-text-primary);
+    transition: all 0.2s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: var(--color-background-light);
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination button.page-number {
+    min-width: 36px;
+    height: 36px;
+}
+
+.pagination button.page-number.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .project-details-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .button-group {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .project-info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .data-table {
+        display: block;
+        overflow-x: auto;
+    }
+}

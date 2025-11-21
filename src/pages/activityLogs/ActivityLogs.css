@@ -1,0 +1,227 @@
+/* Activity Logs Page Styles */
+.activity-logs-layout {
+    min-height: 100vh;
+    background-color: var(--color-background-light);
+}
+
+/* Page Header */
+.activity-logs-header {
+    margin-bottom: 24px;
+}
+
+.activity-logs-header h1 {
+    font-family: var(--font-inter);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Filter Bar */
+.filter-bar {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    padding: 24px;
+    margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr auto;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group.search-field {
+    grid-column: span 1;
+}
+
+.filter-group label {
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    background-color: var(--color-white);
+    transition: border-color 0.2s;
+    height: 40px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.form-control::placeholder {
+    color: var(--color-text-placeholder);
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-family: var(--font-inter);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.btn-primary:hover {
+    background-color: #1e5b9e;
+}
+
+/* Card */
+.card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+}
+
+/* Table Responsive */
+.table-responsive {
+    overflow-x: auto;
+}
+
+/* Data Table */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table thead {
+    background-color: var(--color-background-light);
+}
+
+.data-table th {
+    padding: 16px;
+    text-align: left;
+    font-family: var(--font-inter);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.data-table td {
+    padding: 16px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.data-table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: var(--color-background-light);
+}
+
+.data-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.interactive-row {
+    cursor: pointer;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.pagination span {
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-secondary);
+}
+
+.pagination>div {
+    display: flex;
+    gap: 8px;
+}
+
+.pagination-button {
+    padding: 8px 12px;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    border-radius: 4px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: all 0.2s;
+    min-width: 36px;
+    text-align: center;
+}
+
+.pagination-button:hover:not(:disabled) {
+    background-color: var(--color-background-light);
+    border-color: var(--color-primary);
+}
+
+.pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-background-light);
+}
+
+.pagination-button.active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .filter-bar {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .filter-group.search-field {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-group.search-field {
+        grid-column: span 1;
+    }
+
+    .pagination {
+        flex-direction: column;
+        gap: 16px;
+    }
+}

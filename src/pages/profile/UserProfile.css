@@ -1,0 +1,130 @@
+/* UserProfile Page Styles */
+.user-profile-layout {
+    min-height: 100vh;
+    background-color: var(--color-background-light);
+}
+
+.user-profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.user-info-section {
+    padding: 0 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.user-info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.user-info-item i {
+    color: var(--color-text-secondary);
+    width: 20px;
+    text-align: center;
+}
+
+.user-info-item .label {
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    min-width: 120px;
+}
+
+.user-info-item .value {
+    color: var(--color-text-primary);
+}
+
+.user-info-actions {
+    padding: 0 24px 24px;
+    display: flex;
+    gap: 12px;
+    border-top: 1px solid var(--color-border);
+    padding-top: 24px;
+    margin-top: 8px;
+}
+
+/* Badges */
+.badge-role {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+.badge-status-active {
+    background-color: rgba(51, 204, 153, 0.1);
+    color: var(--color-success);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-status-inactive {
+    background-color: rgba(160, 174, 192, 0.1);
+    color: var(--color-paused-gray);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.badge-in-progress {
+    background-color: rgba(45, 116, 192, 0.1);
+    color: var(--color-primary);
+}
+
+.badge-planning {
+    background-color: rgba(173, 216, 230, 0.2);
+    color: #555;
+}
+
+.badge-completed {
+    background-color: rgba(51, 204, 153, 0.1);
+    color: var(--color-success);
+}
+
+/* Buttons */
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-secondary);
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-icon:hover {
+    color: var(--color-primary);
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .user-profile-grid {
+        grid-template-columns: 1fr;
+    }
+}

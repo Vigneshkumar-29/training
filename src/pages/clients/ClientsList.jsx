@@ -80,10 +80,7 @@ const ClientsList = () => {
 
     // Action handlers
     const handleView = (client) => {
-        console.log('View client:', client);
-        // TODO: Navigate to client details page
-        // navigate(`/clients/${client.id}`);
-        alert(`Viewing client: ${client.name}\n\nThis will navigate to the client details page.`);
+        navigate(`/clients/${client.id}`);
     };
 
     const handleEdit = (client) => {
@@ -139,7 +136,6 @@ const ClientsList = () => {
                             variant="primary"
                             icon="fas fa-plus"
                             onClick={() => navigate('/clients/new')}
-                            className="btn-sm"
                         >
                             Add New Client
                         </Button>
@@ -171,13 +167,13 @@ const ClientsList = () => {
                             <table className="data-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Company Name</th>
-                                        <th>Contact Email</th>
-                                        <th>Phone</th>
-                                        <th>Status</th>
-                                        <th>Created At</th>
-                                        <th>Actions</th>
+                                        <th>NAME</th>
+                                        <th>COMPANY NAME</th>
+                                        <th>CONTACT EMAIL</th>
+                                        <th>PHONE</th>
+                                        <th>STATUS</th>
+                                        <th>CREATED AT</th>
+                                        <th>ACTIONS</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -192,31 +188,33 @@ const ClientsList = () => {
                                             </td>
                                             <td>{client.createdAt}</td>
                                             <td className="actions">
-                                                <Button
-                                                    variant="icon"
-                                                    aria-label="View Details"
-                                                    onClick={() => handleView(client)}
-                                                    title="View Details"
-                                                >
-                                                    <i className="fas fa-eye"></i>
-                                                </Button>
-                                                <Button
-                                                    variant="icon"
-                                                    aria-label="Edit Client"
-                                                    onClick={() => handleEdit(client)}
-                                                    title="Edit Client"
-                                                >
-                                                    <i className="fas fa-edit"></i>
-                                                </Button>
-                                                <Button
-                                                    variant="icon"
-                                                    className="danger"
-                                                    aria-label="Delete Client"
-                                                    onClick={() => handleDelete(client)}
-                                                    title="Delete Client"
-                                                >
-                                                    <i className="fas fa-trash-alt"></i>
-                                                </Button>
+                                                <div className="action-buttons">
+                                                    <Button
+                                                        variant="icon"
+                                                        aria-label="View Details"
+                                                        onClick={() => handleView(client)}
+                                                        title="View Details"
+                                                    >
+                                                        <i className="fas fa-eye"></i>
+                                                    </Button>
+                                                    <Button
+                                                        variant="icon"
+                                                        aria-label="Edit Client"
+                                                        onClick={() => handleEdit(client)}
+                                                        title="Edit Client"
+                                                    >
+                                                        <i className="fas fa-edit"></i>
+                                                    </Button>
+                                                    <Button
+                                                        variant="icon"
+                                                        className="danger"
+                                                        aria-label="Delete Client"
+                                                        onClick={() => handleDelete(client)}
+                                                        title="Delete Client"
+                                                    >
+                                                        <i className="fas fa-trash-alt"></i>
+                                                    </Button>
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}

@@ -35,7 +35,7 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/users" className={({ isActive }) => isActive ? 'active' : ''}>
+                        <NavLink to="/users/1" className={({ isActive }) => isActive ? 'active' : ''}>
                             <i className="fas fa-user-tie"></i>
                             <span>Users</span>
                         </NavLink>
