@@ -35,7 +35,7 @@ const ProjectDetails = () => {
     ]);
 
     const handleEditProject = () => {
-        alert('Edit Project functionality to be implemented');
+        navigate(`/projects/${id}/edit`);
     };
 
     const handleDeleteProject = () => {

@@ -100,7 +100,7 @@ const UserProfile = () => {
                                 <button className="btn btn-secondary">
                                     <i className="fas fa-envelope"></i> Send Email
                                 </button>
-                                <button className="btn btn-secondary">
+                                <button className="btn btn-secondary" onClick={() => navigate('/change-password')}>
                                     <i className="fas fa-key"></i> Reset Password
                                 </button>
                             </div>

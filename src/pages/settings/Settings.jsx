@@ -25,7 +25,7 @@ const Settings = () => {
     ];
 
     const handleChangePassword = () => {
-        alert('Change Password functionality to be implemented');
+        navigate('/change-password');
     };
 
     const handleEditProfile = () => {

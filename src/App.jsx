@@ -8,11 +8,13 @@ import ClientDetails from './pages/clients/ClientDetails';
 import EditClient from './pages/clients/EditClient';
 import ProjectsList from './pages/projects/ProjectsList';
 import CreateProject from './pages/projects/CreateProject';
+import EditProject from './pages/projects/EditProject';
 import ProjectDetails from './pages/projects/ProjectDetails';
 import ActivityLogs from './pages/activityLogs/ActivityLogs';
 import ProjectTasks from './pages/tasks/ProjectTasks';
 import Settings from './pages/settings/Settings';
 import UserProfile from './pages/profile/UserProfile';
+import ChangePassword from './pages/profile/ChangePassword';
 import { AuthProvider, useAuth } from './store/auth.store.jsx';
 
 function App() {
@@ -99,6 +101,14 @@ function App() {
             }
           />
           <Route
+            path="/projects/:id/edit"
+            element={
+              <ProtectedRoute>
+                <EditProject />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/activity-logs"
             element={
               <ProtectedRoute>
@@ -127,6 +137,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <UserProfile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/change-password"
+            element={
+              <ProtectedRoute>
+                <ChangePassword />
               </ProtectedRoute>
             }
           />

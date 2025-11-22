@@ -119,7 +119,11 @@ const ProjectsList = () => {
                                                     >
                                                         <i className="fas fa-eye"></i>
                                                     </button>
-                                                    <button className="btn-icon" title="Edit Project">
+                                                    <button
+                                                        className="btn-icon"
+                                                        title="Edit Project"
+                                                        onClick={() => navigate(`/projects/${project.id}/edit`)}
+                                                    >
                                                         <i className="fas fa-edit"></i>
                                                     </button>
                                                     <button className="btn-icon delete" title="Delete Project">

@@ -163,11 +163,11 @@ const ClientDetails = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="pagination">
-                            <button className="page-number">« Previous</button>
-                            <button className="page-number active">1</button>
-                            <button className="page-number">2</button>
-                            <button className="page-number">Next »</button>
+                        <div className="pagination-container">
+                            <button className="btn-pagination">« Previous</button>
+                            <button className="btn-pagination active">1</button>
+                            <button className="btn-pagination">2</button>
+                            <button className="btn-pagination">Next »</button>
                         </div>
                     </div>
                 </main>

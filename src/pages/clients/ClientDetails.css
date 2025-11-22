@@ -184,7 +184,6 @@
     cursor: pointer;
     transition: all 0.2s;
     padding: 0;
-    /* Reset padding */
 }
 
 .icon-button:hover {
@@ -194,19 +193,17 @@
 }
 
 /* Pagination - Matched to ProjectsList */
-.pagination {
+.pagination-container {
     display: flex;
     justify-content: flex-end;
     padding: 16px 24px;
     gap: 8px;
     border-top: 1px solid var(--color-border);
     margin-top: 0;
-    /* Reset margin */
 }
 
-.page-number {
+.btn-pagination {
     display: flex;
-    /* Changed from inline-flex to match btn-pagination */
     align-items: center;
     justify-content: center;
     padding: 6px 12px;
@@ -218,212 +215,15 @@
     cursor: pointer;
     transition: all 0.2s;
     width: auto;
-    /* Reset width */
     height: auto;
-    /* Reset height */
 }
 
-.page-number:hover {
+.btn-pagination:hover {
     background-color: #f1f5f9;
     color: var(--color-text-primary);
 }
 
-.page-number.active {
-    font-weight: 500;
-    color: var(--color-text-secondary);
-    width: 140px;
-}
-
-.client-info-item .value {
-    color: var(--color-text-primary);
-    font-weight: 400;
-}
-
-.client-info-actions {
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.badge {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4px 12px;
-    border-radius: 14px;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.badge-active {
-    background-color: rgba(51, 204, 153, 0.1);
-    color: var(--color-success);
-}
-
-.badge-inprogress {
-    background-color: rgba(45, 116, 192, 0.1);
-    color: var(--color-primary);
-}
-
-.badge-notstarted {
-    background-color: rgba(173, 216, 230, 0.2);
-    color: #555;
-}
-
-.badge-completed {
-    background-color: rgba(51, 204, 153, 0.1);
-    color: var(--color-success);
-}
-
-.page-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--padding-base);
-}
-
-.page-actions {
-    display: flex;
-    gap: 12px;
-}
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-    font-size: 15px;
-    cursor: pointer;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-}
-
-.btn-primary {
-    background-color: var(--color-primary);
-    color: white;
-}
-
-.btn-secondary {
-    background-color: white;
-    border-color: var(--color-primary);
-    color: var(--color-primary);
-}
-
-.btn-danger {
-    background-color: var(--color-alert-red);
-    color: white;
-}
-
-.btn:hover {
-    opacity: 0.9;
-}
-
-/* Table Styles - Matched to ProjectsList */
-.data-table-container {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.data-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.data-table th {
-    background-color: var(--color-background-light);
-    padding: 16px 24px;
-    text-align: left;
-    font-family: var(--font-inter);
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    border-bottom: 1px solid var(--color-border);
-    white-space: nowrap;
-}
-
-.data-table td {
-    padding: 16px 24px;
-    border-bottom: 1px solid var(--color-border);
-    font-family: var(--font-inter);
-    font-size: 14px;
-    color: var(--color-text-primary);
-    vertical-align: middle;
-}
-
-.data-table tr:last-child td {
-    border-bottom: none;
-}
-
-.data-table tr:hover {
-    background-color: #f8fafc;
-}
-
-/* Action Buttons - Matched to ProjectsList */
-.action-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-.icon-button {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-white);
-    color: var(--color-text-secondary);
-    cursor: pointer;
-    transition: all 0.2s;
-    padding: 0;
-    /* Reset padding */
-}
-
-.icon-button:hover {
-    background-color: #f1f5f9;
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-}
-
-/* Pagination - Matched to ProjectsList */
-.pagination {
-    display: flex;
-    justify-content: flex-end;
-    padding: 16px 24px;
-    gap: 8px;
-    border-top: 1px solid var(--color-border);
-    margin-top: 0;
-    /* Reset margin */
-}
-
-.page-number {
-    display: flex;
-    /* Changed from inline-flex to match btn-pagination */
-    align-items: center;
-    justify-content: center;
-    padding: 6px 12px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background-color: var(--color-white);
-    color: var(--color-text-secondary);
-    font-size: 13px;
-    cursor: pointer;
-    transition: all 0.2s;
-    width: auto;
-    /* Reset width */
-    height: auto;
-    /* Reset height */
-}
-
-.page-number:hover {
-    background-color: #f1f5f9;
-    color: var(--color-text-primary);
-}
-
-.page-number.active {
+.btn-pagination.active {
     background-color: var(--color-primary);
     color: var(--color-white);
     border-color: var(--color-primary);

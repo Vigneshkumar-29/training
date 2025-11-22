@@ -34,18 +34,41 @@ const ClientsChart = ({ data }) => {
             };
 
             // Animate donut slices entrance
-            g.selectAll('slices')
+            const slices = g.selectAll('slices')
                 .data(pie(data))
                 .enter()
                 .append('path')
                 .attr('fill', d => d.data.color || 'var(--color-primary)')
                 .attr('stroke', 'var(--color-white)')
-                .style('stroke-width', '2px')
+                .style('stroke-width', '3px')
                 .style('opacity', 0.9)
+                .style('cursor', 'pointer')
                 .transition()
-                .duration(1200)
-                .ease(d3.easeCubicOut)
+                .duration(1000)
+                .delay((d, i) => i * 200) // Staggered animation
+                .ease(d3.easeBackOut.overshoot(0.3))
                 .attrTween('d', arcTween);
+
+            // Add interactive hover effects
+            g.selectAll('path')
+                .on('mouseenter', function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .ease(d3.easeElastic)
+                        .attr('d', d3.arc()
+                            .innerRadius(radius * 0.6)
+                            .outerRadius(radius * 1.05)(d))
+                        .style('opacity', 1);
+                })
+                .on('mouseleave', function (event, d) {
+                    d3.select(this)
+                        .transition()
+                        .duration(300)
+                        .ease(d3.easeElastic)
+                        .attr('d', arc(d))
+                        .style('opacity', 0.9);
+                });
 
             // Animate polylines (leader lines)
             g.selectAll('polyline')
@@ -54,7 +77,7 @@ const ClientsChart = ({ data }) => {
                 .append('polyline')
                 .attr('stroke', 'var(--color-text-secondary)')
                 .style('fill', 'none')
-                .attr('stroke-width', 1)
+                .attr('stroke-width', 1.5)
                 .style('opacity', 0)
                 .attr('points', function (d) {
                     const posA = arc.centroid(d);
@@ -65,10 +88,10 @@ const ClientsChart = ({ data }) => {
                     return [posA, posB, posC];
                 })
                 .transition()
-                .duration(800)
-                .delay(1000)
-                .ease(d3.easeCubicOut)
-                .style('opacity', 1);
+                .duration(600)
+                .delay((d, i) => 1000 + i * 100)
+                .ease(d3.easeQuadOut)
+                .style('opacity', 0.7);
 
             // Animate labels
             g.selectAll('slice-labels')
@@ -85,15 +108,15 @@ const ClientsChart = ({ data }) => {
                     const midangle = d.startAngle + (d.endAngle - d.startAngle) / 2;
                     return midangle < Math.PI ? 'start' : 'end';
                 })
-                .text(d => d.data.status)
+                .text(d => `${d.data.status} (${d.data.count})`)
                 .style('font-size', 13)
                 .style('font-weight', '600')
                 .style('fill', 'var(--color-text-primary)')
                 .style('opacity', 0)
                 .transition()
-                .duration(600)
-                .delay(1200)
-                .ease(d3.easeCubicOut)
+                .duration(500)
+                .delay((d, i) => 1200 + i * 100)
+                .ease(d3.easeBackOut)
                 .style('opacity', 1);
         };
 

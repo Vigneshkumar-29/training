@@ -128,9 +128,7 @@
     transition: all 0.2s;
 }
 
-.btn-secondary:hover {
-    background-color: #f0f7ff;
-}
+
 
 .btn-primary {
     display: inline-flex;
@@ -150,9 +148,7 @@
     margin-top: auto;
 }
 
-.btn-primary:hover {
-    background-color: #1e5b9e;
-}
+
 
 /* Card Header */
 .card-header {
@@ -179,10 +175,7 @@
     transition: color 0.2s;
 }
 
-.view-all-link:hover {
-    color: #1e5b9e;
-    text-decoration: underline;
-}
+
 
 /* Activity Log Table */
 .activity-log-table {
@@ -217,9 +210,7 @@
     transition: background-color 0.2s;
 }
 
-.activity-log-table tbody tr:hover {
-    background-color: var(--color-background-light);
-}
+
 
 .interactive-row {
     cursor: pointer;

@@ -43,7 +43,7 @@ const ProjectsChart = ({ data }) => {
                 .style('font-size', '12px')
                 .style('fill', 'var(--color-text-secondary)');
 
-            // Animate bars entrance
+            // Animate bars entrance with staggered delay
             g.selectAll('.bar')
                 .data(data)
                 .enter()
@@ -54,11 +54,30 @@ const ProjectsChart = ({ data }) => {
                 .attr('width', x.bandwidth())
                 .attr('height', 0)
                 .attr('fill', d => d.color || 'var(--color-primary)')
+                .attr('rx', 4) // Rounded corners for modern look
+                .attr('ry', 4)
+                .style('cursor', 'pointer')
                 .transition()
-                .duration(1000)
-                .ease(d3.easeCubicOut)
+                .duration(800)
+                .delay((d, i) => i * 150) // Staggered animation
+                .ease(d3.easeBackOut.overshoot(0.5))
                 .attr('y', d => y(d.count))
                 .attr('height', d => height - y(d.count));
+
+            // Add hover effect
+            g.selectAll('.bar')
+                .on('mouseenter', function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('opacity', 0.8);
+                })
+                .on('mouseleave', function () {
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr('opacity', 1);
+                });
 
             // Add labels with animation
             g.selectAll('.bar-label')
@@ -71,14 +90,14 @@ const ProjectsChart = ({ data }) => {
                 .attr('text-anchor', 'middle')
                 .text(d => d.count)
                 .style('fill', 'var(--color-text-primary)')
-                .style('font-size', '12px')
-                .style('font-weight', '600')
+                .style('font-size', '14px')
+                .style('font-weight', '700')
                 .style('opacity', 0)
                 .transition()
-                .duration(1000)
-                .delay(500)
-                .ease(d3.easeCubicOut)
-                .attr('y', d => y(d.count) - 5)
+                .duration(600)
+                .delay((d, i) => 800 + i * 150) // Sync with bar animation
+                .ease(d3.easeBackOut)
+                .attr('y', d => y(d.count) - 8)
                 .style('opacity', 1);
         };
 

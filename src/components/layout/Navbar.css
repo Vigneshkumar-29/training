@@ -91,6 +91,12 @@
     text-decoration: none;
 }
 
+.user-menu-dropdown .logout-link {
+    border-top: 1px solid var(--color-border);
+    margin-top: 4px;
+    padding-top: 12px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .header {
