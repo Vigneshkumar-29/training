@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../store/auth.store.jsx';
 import './Login.css';
 
 const Login = () => {
@@ -9,20 +10,33 @@ const Login = () => {
     });
     const navigate = useNavigate();
 
+    const { login } = useAuth();
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
+        // Clear error when user types
+        if (error) setError('');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // TODO: Implement login logic
-        console.log('Login submitted:', formData);
-        // Simulate successful login
-        navigate('/dashboard');
+        setError('');
+        setIsLoading(true);
+
+        try {
+            await login(formData.email, formData.password);
+            navigate('/dashboard');
+        } catch (err) {
+            setError(err.message || 'Failed to login. Please check your credentials.');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -61,7 +75,10 @@ const Login = () => {
                     <div className="forgot-password">
                         <a href="#" aria-label="Forgot Password?">Forgot Password?</a>
                     </div>
-                    <button type="submit" className="btn-primary">Login</button>
+                    {error && <div className="error-message" style={{ color: 'red', marginBottom: '1rem' }}>{error}</div>}
+                    <button type="submit" className="btn-primary" disabled={isLoading}>
+                        {isLoading ? 'Logging in...' : 'Login'}
+                    </button>
                 </form>
                 <p className="security-text">
                     Your data is secure. We use industry-standard encryption for your

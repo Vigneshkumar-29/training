@@ -25,25 +25,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--padding-base);
+    margin-bottom: 24px;
 }
 
 .page-header h1 {
+    font-family: var(--font-inter);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-text-primary);
     margin: 0;
 }
 
 /* Filter Card */
-.filter-card {
-    padding-top: 16px;
-    padding-bottom: 16px;
-}
-
-.filter-card:hover {
-    transform: none;
+.clients-filter-card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
     box-shadow: var(--card-shadow);
+    padding: 24px;
+    margin-bottom: 24px;
 }
 
-/* Filter Bar */
 .filter-bar {
     display: flex;
     gap: 16px;
@@ -58,150 +59,150 @@
     flex: 0 0 200px;
 }
 
-/* Table Card */
-.table-card {
-    margin-top: var(--padding-base);
-}
-
-.table-card:hover {
-    transform: none;
+/* Table Section */
+.clients-table-card {
+    background-color: var(--color-white);
+    border-radius: var(--card-border-radius);
     box-shadow: var(--card-shadow);
+    padding: 0;
+    overflow: hidden;
 }
 
-/* Data Table */
-.data-table-container {
+.clients-table-responsive {
     overflow-x: auto;
 }
 
-.data-table {
+.clients-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 0;
-    min-width: 800px;
 }
 
-.data-table th,
-.data-table td {
+.clients-table th {
+    background-color: var(--color-background-light);
+    padding: 16px 24px;
     text-align: left;
-    padding: 16px;
+    font-family: var(--font-inter);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
     border-bottom: 1px solid var(--color-border);
-    font-size: 15px;
+    white-space: nowrap;
+}
+
+.clients-table td {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: var(--font-inter);
+    font-size: 14px;
+    color: var(--color-text-primary);
     vertical-align: middle;
 }
 
-.data-table th {
-    background-color: var(--color-background-light);
-    font-weight: 600;
-    color: var(--color-text-secondary);
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-}
-
-.data-table tr:last-child td {
+.clients-table tr:last-child td {
     border-bottom: none;
 }
 
-.data-table tr:hover {
+.clients-table tr:hover {
     background-color: #f8fafc;
 }
 
-/* Actions Column */
-.data-table td.actions {
+/* Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
     white-space: nowrap;
 }
 
+.status-badge.active {
+    background-color: #e6fff4;
+    color: #33cc99;
+}
+
+.status-badge.new {
+    background-color: #e3f2fd;
+    color: #2d74c0;
+}
+
+.status-badge.paused {
+    background-color: #fffbe6;
+    color: #f97316;
+}
+
+.status-badge.closed {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+/* Actions */
 .action-buttons {
     display: flex;
     gap: 8px;
 }
 
-/* Icon Buttons - Override Button component styles for table actions */
-.action-buttons .btn-icon {
+.btn-icon {
     width: 32px;
     height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--color-border) !important;
+    border: 1px solid var(--color-border);
     border-radius: 4px;
-    background-color: var(--color-white) !important;
+    background-color: var(--color-white);
     color: var(--color-text-secondary);
     cursor: pointer;
     transition: all 0.2s;
-    padding: 0;
 }
 
-.action-buttons .btn-icon:hover {
-    background-color: #f1f5f9 !important;
+.btn-icon:hover {
+    background-color: #f1f5f9;
     color: var(--color-primary);
-    border-color: var(--color-primary) !important;
-    transform: none;
-    box-shadow: none;
+    border-color: var(--color-primary);
 }
 
-.action-buttons .btn-icon.danger:hover {
+.btn-icon.delete:hover {
     color: var(--color-alert-red);
-    border-color: var(--color-alert-red) !important;
+    border-color: var(--color-alert-red);
 }
 
 /* Pagination */
-.pagination {
+.pagination-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: flex-end;
     padding: 16px 24px;
+    gap: 8px;
     border-top: 1px solid var(--color-border);
 }
 
-.pagination .text-sm {
-    font-size: 13px;
-    color: var(--color-text-secondary);
-}
-
-.pagination-controls {
-    display: flex;
-    gap: 8px;
-}
-
-.pagination-controls button {
-    background-color: var(--color-white);
+.btn-pagination {
+    padding: 6px 12px;
     border: 1px solid var(--color-border);
-    color: var(--color-text-primary);
-    padding: 8px 12px;
     border-radius: 4px;
-    font-size: 14px;
+    background-color: var(--color-white);
+    color: var(--color-text-secondary);
+    font-size: 13px;
     cursor: pointer;
-    min-width: 36px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
     transition: all 0.2s;
 }
 
-.pagination-controls button.active {
+.btn-pagination:hover:not(:disabled) {
+    background-color: #f1f5f9;
+    color: var(--color-text-primary);
+}
+
+.btn-pagination.active {
     background-color: var(--color-primary);
     color: var(--color-white);
     border-color: var(--color-primary);
 }
 
-.pagination-controls button:disabled {
-    background-color: var(--color-background-light);
-    color: var(--color-text-secondary);
+.btn-pagination:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
-    opacity: 1;
-}
-
-.pagination-controls button:not(:disabled):hover {
-    background-color: #f1f5f9;
-}
-
-.pagination-controls button:disabled:hover {
-    transform: none;
-    box-shadow: none;
 }
 
 /* Responsive */
@@ -243,16 +244,7 @@
         flex-basis: 100%;
     }
 
-    .data-table-container {
-        overflow-x: scroll;
-    }
-
-    .data-table {
-        min-width: 700px;
-    }
-
-    .pagination {
-        flex-direction: column;
-        gap: 16px;
+    .clients-table-responsive {
+        overflow-x: auto;
     }
 }

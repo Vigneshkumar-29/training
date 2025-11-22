@@ -29,6 +29,12 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink to="/tasks" className={({ isActive }) => isActive ? 'active' : ''}>
+                            <i className="fas fa-tasks"></i>
+                            <span>Tasks</span>
+                        </NavLink>
+                    </li>
+                    <li>
                         <NavLink to="/activity-logs" className={({ isActive }) => isActive ? 'active' : ''}>
                             <i className="fas fa-clipboard-list"></i>
                             <span>Activity Logs</span>

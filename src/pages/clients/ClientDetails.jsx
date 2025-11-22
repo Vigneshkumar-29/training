@@ -1,9 +1,13 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import Sidebar from '../../components/layout/Sidebar';
 import Navbar from '../../components/layout/Navbar';
 import './ClientDetails.css';
 
 const ClientDetails = () => {
+    const navigate = useNavigate();
+    const { id } = useParams();
+
     return (
         <div className="dashboard-layout">
             <Sidebar />
@@ -13,7 +17,10 @@ const ClientDetails = () => {
                     <div className="page-header">
                         <h1>Client Details: Acme Corporation</h1>
                         <div className="page-actions">
-                            <button className="btn btn-secondary">
+                            <button
+                                className="btn btn-secondary"
+                                onClick={() => navigate(`/clients/${id}/edit`)}
+                            >
                                 <i className="fas fa-edit"></i> Edit Client
                             </button>
                             <button className="btn btn-danger">
@@ -157,10 +164,10 @@ const ClientDetails = () => {
                             </table>
                         </div>
                         <div className="pagination">
-                            <button>« Previous</button>
-                            <span className="page-number active">1</span>
-                            <span className="page-number">2</span>
-                            <button>Next »</button>
+                            <button className="page-number">« Previous</button>
+                            <button className="page-number active">1</button>
+                            <button className="page-number">2</button>
+                            <button className="page-number">Next »</button>
                         </div>
                     </div>
                 </main>

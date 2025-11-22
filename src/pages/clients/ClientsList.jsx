@@ -141,7 +141,7 @@ const ClientsList = () => {
                         </Button>
                     </div>
 
-                    <div className="card filter-card">
+                    <div className="clients-filter-card">
                         <div className="filter-bar">
                             <Input
                                 label="Search by Name or Company"
@@ -162,18 +162,18 @@ const ClientsList = () => {
                         </div>
                     </div>
 
-                    <div className="card table-card">
-                        <div className="data-table-container">
-                            <table className="data-table">
+                    <div className="clients-table-card">
+                        <div className="clients-table-responsive">
+                            <table className="clients-table">
                                 <thead>
                                     <tr>
-                                        <th>NAME</th>
-                                        <th>COMPANY NAME</th>
-                                        <th>CONTACT EMAIL</th>
-                                        <th>PHONE</th>
-                                        <th>STATUS</th>
-                                        <th>CREATED AT</th>
-                                        <th>ACTIONS</th>
+                                        <th>Name</th>
+                                        <th>Company Name</th>
+                                        <th>Contact Email</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Created At</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -184,36 +184,34 @@ const ClientsList = () => {
                                             <td>{client.email}</td>
                                             <td>{client.phone}</td>
                                             <td>
-                                                <ClientStatusBadge status={client.status} />
+                                                <span className={`status-badge ${client.status.toLowerCase()}`}>
+                                                    {client.status}
+                                                </span>
                                             </td>
                                             <td>{client.createdAt}</td>
-                                            <td className="actions">
+                                            <td>
                                                 <div className="action-buttons">
-                                                    <Button
-                                                        variant="icon"
-                                                        aria-label="View Details"
-                                                        onClick={() => handleView(client)}
+                                                    <button
+                                                        className="btn-icon"
                                                         title="View Details"
+                                                        onClick={() => handleView(client)}
                                                     >
                                                         <i className="fas fa-eye"></i>
-                                                    </Button>
-                                                    <Button
-                                                        variant="icon"
-                                                        aria-label="Edit Client"
-                                                        onClick={() => handleEdit(client)}
+                                                    </button>
+                                                    <button
+                                                        className="btn-icon"
                                                         title="Edit Client"
+                                                        onClick={() => handleEdit(client)}
                                                     >
                                                         <i className="fas fa-edit"></i>
-                                                    </Button>
-                                                    <Button
-                                                        variant="icon"
-                                                        className="danger"
-                                                        aria-label="Delete Client"
-                                                        onClick={() => handleDelete(client)}
+                                                    </button>
+                                                    <button
+                                                        className="btn-icon delete"
                                                         title="Delete Client"
+                                                        onClick={() => handleDelete(client)}
                                                     >
                                                         <i className="fas fa-trash-alt"></i>
-                                                    </Button>
+                                                    </button>
                                                 </div>
                                             </td>
                                         </tr>
@@ -222,33 +220,30 @@ const ClientsList = () => {
                             </table>
                         </div>
 
-                        <div className="pagination">
-                            <small className="text-sm">
-                                Showing {startIndex + 1} to {endIndex} of {totalEntries} entries
-                            </small>
-                            <div className="pagination-controls">
+                        <div className="pagination-container">
+                            <button
+                                className="btn-pagination"
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            >
+                                <i className="fas fa-chevron-left"></i> Previous
+                            </button>
+                            {[...Array(totalPages)].map((_, index) => (
                                 <button
-                                    onClick={() => handlePageChange(currentPage - 1)}
-                                    disabled={currentPage === 1}
+                                    key={index + 1}
+                                    className={`btn-pagination ${currentPage === index + 1 ? 'active' : ''}`}
+                                    onClick={() => handlePageChange(index + 1)}
                                 >
-                                    <i className="fas fa-chevron-left"></i> Previous
+                                    {index + 1}
                                 </button>
-                                {[...Array(totalPages)].map((_, index) => (
-                                    <button
-                                        key={index + 1}
-                                        className={currentPage === index + 1 ? 'active' : ''}
-                                        onClick={() => handlePageChange(index + 1)}
-                                    >
-                                        {index + 1}
-                                    </button>
-                                ))}
-                                <button
-                                    onClick={() => handlePageChange(currentPage + 1)}
-                                    disabled={currentPage === totalPages}
-                                >
-                                    Next <i className="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
+                            ))}
+                            <button
+                                className="btn-pagination"
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                            >
+                                Next <i className="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </main>

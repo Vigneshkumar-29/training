@@ -54,3 +54,14 @@
         width: 100%;
     }
 }
+
+/* Remove hover effects */
+.create-client-layout .card:hover {
+    transform: none;
+    box-shadow: var(--card-shadow);
+}
+
+.create-client-layout button:hover {
+    transform: none;
+    box-shadow: none;
+}
